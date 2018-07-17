@@ -11,11 +11,13 @@ library(httr)
 library(ggplot2)
 
 #setup the API keys
-setwd('C:\\Users\\anupama25\\Desktop\\TwitterProject')
-api_key <- "DxSUBTzVMQ0HYvaHRqzTdZ5LG"
-api_secret <- "4owijDG4WZNOru8zO8uce3HuLFCJYmGh6TAMRWbi3cqQanz2CA"
-access_token <- "192075285-Zt7AYqaRDHM6BqrbUAHMLdV2H5a4TdH99e1ZqyHV"
-access_token_secret <- "aHjklf5O2GZY855UJIf2Q6Nb08v933xZIF4ev46d0jFaW"
+setwd('..\\TwitterProject')
+
+#setup twitter app to get following keys
+api_key <- "--------------------"
+api_secret <- "------------"
+access_token <- "--------------------------------"
+access_token_secret <- "---------------------------------"
 
 setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
 
@@ -35,14 +37,6 @@ primeDay_tweets_df <- twListToDF(primeDay_tweets)
 #View(primeDay_tweets_df)
 
 primeDay_tweets_df <- primeDay_tweets_df[, order(names(primeDay_tweets_df))] #ordering file with column names
-
-
-#for creating cumulative file
-#temp <- strftime(primeDay_tweets_df$created, '%Y-%m-%d')
-# if (file.exists(paste(hashtags, '_stack.csv'))== FALSE) {
-#   write.csv(primeDay_tweets_df, file = paste('primeDay', '_stack.csv'), row.names = FALSE)
-# }
-
 
 
 
@@ -68,6 +62,9 @@ score.sentiment <- function(sentences, pos.words, neg.words, .progress='none')
   scores.df <- data.frame(score=scores, text=sentences)
   return(scores.df)
 }
+
+# gsub('[[:punct:]]'   '[[:cntrl:]]'    '\\d+' --- removes punctuations, control words and digits from tweets
+
 
 #downloaded and used pos n negative word-list from github.
 
