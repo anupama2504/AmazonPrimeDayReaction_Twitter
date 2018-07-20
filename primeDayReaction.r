@@ -73,8 +73,8 @@ pos_dic = scan('wordDictionaryFiles/positive-words.txt',
 neg_dic = scan('wordDictionaryFiles/negative-words.txt',
                what='character', comment.char=';')
 # Add a few twitter-specific negative phrases
-pos.words <- c(pos_dic, 'wtf', 'epicfail', 'douchebag')
-neg.words <-  c(neg_dic, 'upgrade', ':)', '#iVoted', 'voted')
+pos.words <- c(pos_dic, 'upgrade', ':)', '#iVoted', 'voted')
+neg.words <-  c(neg_dic,'wtf', 'epicfail', 'douchebag')
 
 primeDay_tweets_df$text <- as.factor(primeDay_tweets_df$text)
 tweets <- iconv(primeDay_tweets_df$text, "WINDOWS-1252","UTF-8")
